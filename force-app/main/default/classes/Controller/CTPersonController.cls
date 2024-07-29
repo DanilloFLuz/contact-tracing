@@ -62,4 +62,13 @@ public with sharing class CTPersonController {
         return healthStatusCount;
     }
 
+    public static void updateYellowScore(Set<Id> personIds){
+        List<Person__c> peopleToUpdate = new List<Person__c>();
+        for(Id pid : personIds){
+            peopleToUpdate.add(new Person__c(Id=pid,Health_Status__c='Yellow'));
+        }
+        if(peopleToUpdate.size() > 0){
+            update peopleToUpdate;
+        }
+    }
 }
