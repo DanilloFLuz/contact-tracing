@@ -1,0 +1,48 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute
+        name="modes"
+        type="List"
+        default="[
+    {'label': 'Easy', 'value': 'easy'},
+    {'label': 'Medium', 'value': 'medium'},
+    {'label': 'Hard', 'value': 'hard'},
+    ]"
+    />
+    <aura:attribute name="selectedMod" type="String"></aura:attribute>
+    <aura:attribute name="reshuffleDisabled" type="Boolean" default="true"/>
+
+    <aura:handler event="c:ResultApplicationEvent" action="{!c.onResultHandler}" />
+
+    <lightning:card title="World Shuffle">
+        <lightning:layout horizontalAlign="center" multipleRows="true">
+            <lightning:layoutItem padding="around-small">
+                <lightning:combobox
+                    aura:id="gameMode"
+                    name="gameMode"
+                    variant="label-hidden"
+                    label="Game Mode"
+                    value="inProgress"
+                    placeholder="Select Game Mode"
+                    options="{! v.modes}"
+                />
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <lightning:button
+                    variant="brand"
+                    aura:id="startNewGameButton"
+                    label="Start New Game"
+                    title="Start New Game"
+                    onclick="{!c.startGame}"
+                />
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <lightning:button label="Reshuffle" title="Reshuffle" disabled="{!v.reshuffleDisabled}" onclick="{!c.reshuffleBoard}" />
+            </lightning:layoutItem>
+            <aura:if isTrue="{! (v.selectedMod != null)}">
+                <lightning:layoutItem size="12">
+                    <c:Board aura:id="boardComp" mode="{!v.selectedMod}"> </c:Board>
+                </lightning:layoutItem> 
+            </aura:if>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>
