@@ -1,0 +1,23 @@
+<aura:component implements="force:appHostable">
+    <aura:attribute name="scope" type="String" default="person" />
+    <aura:attribute name="headerTitle" type="String" default="Person View" />
+
+    <div class="container">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12">
+                <!--Layout Item content goes here -->
+                <c:CTHealthHeader headerTitle="{!v.headerTitle}" scope="{!v.scope}" aura:id="health-header"></c:CTHealthHeader>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12">
+                <lightning:tabset variant="vertical" onselect="{! c.tabSelectHandler }">
+                    <lightning:tab label="Person View" id="person">
+                        <c:CTRecentChanges scope="person" ></c:CTRecentChanges>
+                    </lightning:tab>
+                    <lightning:tab label="Location View" id="location">
+                        <c:CTRecentChanges scope="location" ></c:CTRecentChanges>
+                    </lightning:tab>
+                </lightning:tabset>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>
