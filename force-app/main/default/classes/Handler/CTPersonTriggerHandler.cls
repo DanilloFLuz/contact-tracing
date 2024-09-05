@@ -13,6 +13,9 @@ public with sharing class CTPersonTriggerHandler {
             if(String.isNotBlank(p.Id) && oldMap.get(p.Id).Health_Status__c != p.Health_Status__c){
                 p.Status_Update_Date__c=Date.today();
             }
+            if(oldMap.get(p.Id).Mobile__c != p.Mobile__c && p.Mobile__c != null){
+                p.Token__c = CTPersonController.getToken(p.Mobile__c);
+            }
         }
     }
 
