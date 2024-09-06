@@ -17,18 +17,10 @@
             <div class="card-container slds-align_absolute-center">
                 <div class="header-panel">
                     <div class="{! v.locationInfo.status + ' health-header'}">
-                        {!v.locationInfo.name}, your health status is {!v.locationInfo.status}
+                        {!v.locationInfo.name}, is in {!v.locationInfo.status} status
                     </div>
                     <div class="subheader-panel">
                         <div class="subheader-row">
-                            <div class="row-item">
-                                <div class="row-item-label slds-text-title">
-                                    Location
-                                </div>
-                                <div class="row-item-value">
-                                    {!v.locationInfo.name}
-                                </div>
-                            </div>
                             <div class="row-item">
                                 <div class="row-item-label slds-text-title">
                                     Pincode
@@ -47,14 +39,6 @@
                             </div>
                             <div class="row-item">
                                 <div class="row-item-label slds-text-title">
-                                    Status
-                                </div>
-                                <div class="row-item-value">
-                                    {!v.locationInfo.status}
-                                </div>
-                            </div>
-                            <div class="row-item">
-                                <div class="row-item-label slds-text-title">
                                     Status Updated On
                                 </div>
                                 <div class="row-item-value">
@@ -63,7 +47,7 @@
                             </div>
                             <div class="row-item">
                                 <div class="row-item-label slds-text-title">
-                                    Contacts in Last 30 Days
+                                    Visitors in Last 30 Days
                                 </div>
                                 <div class="row-item-value">
                                     {!v.locationInfo.contactsCount}
@@ -74,7 +58,7 @@
                 </div>
                 <div class="body">
                     <div class="slds-text-heading_medium slds-p-left_xx-small">
-                        Recent Contacts
+                        Recent Visitors
                     </div>
                     <div class="contacts">
                         <lightning:datatable keyField="id" data="{! v.locationInfo.personVisitors }" columns="{! v.columns }" hideCheckboxColumn="true" />
